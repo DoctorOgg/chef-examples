@@ -1,0 +1,30 @@
+<% if node["oun"]["enable_ssh_group_limit"] == true %>
+AllowGroups <%=node["oun"]["ssh_allowd_groups"].join(' ')%>
+<% end %>
+Ciphers aes256-cbc,blowfish-cbc
+Protocol 2
+UsePrivilegeSeparation yes
+RSAAuthentication yes
+PubkeyAuthentication yes
+StrictModes yes
+Port 22
+HostKey /etc/ssh/ssh_host_rsa_key
+KeyRegenerationInterval 3600
+ServerKeyBits 768
+SyslogFacility AUTH
+LogLevel INFO
+LoginGraceTime 120
+IgnoreRhosts yes
+RhostsRSAAuthentication no
+HostbasedAuthentication no
+PermitEmptyPasswords no
+ChallengeResponseAuthentication no
+PasswordAuthentication yes
+X11Forwarding yes
+X11DisplayOffset 10
+PrintMotd no
+PrintLastLog yes
+TCPKeepAlive yes
+AcceptEnv LANG LC_*
+Subsystem sftp /usr/lib/openssh/sftp-server
+UsePAM yes

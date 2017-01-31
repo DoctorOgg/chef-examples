@@ -1,0 +1,6 @@
+base <%=node["oun"]["ldap"]["search_base"]%>
+uri <%=node["oun"]["ldap"]["uri"].join(',')%>
+ldap_version 3
+pam_password md5
+sslpath /etc/ssl/certs
+nss_initgroups_ignoreusers Debian-exim,avahi,backup,bin,daemon,games,gnats,haldaemon,irc,landscape,libuuid,list,lp,mail,man,messagebus,mysql,news,proxy,root,sshd,sync,sys,syslog,usbmux,uucp,www-data

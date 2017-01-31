@@ -1,0 +1,10 @@
+<?php
+// Tenant Name: <%=@config["tenant_name"]%>
+<% @config["config"].each do |k,v|
+if v.class == String %>
+$config['<%=k%>'] = "<%=v.to_s%>";
+<% else %>
+$config['<%=k%>'] = <%=v.to_s%>;
+<% end
+end %>
+?>

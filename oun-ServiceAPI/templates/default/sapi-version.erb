@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+branch=`(cd <%=node["oun-ServiceAPI"]["sapi_home_dir"]%> && git branch --list |grep "*")`
+version=`(cd <%=node["oun-ServiceAPI"]["sapi_home_dir"]%> && git describe --always)`
+
+echo "ServiceAPI VERSION: ${branch}: ${version}"

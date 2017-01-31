@@ -1,0 +1,14 @@
+{
+  "name": "chefsolo",
+  "json_class": "Chef::Role",
+  "chef_type": "role",
+  "run_list": [
+    "recipe[oun-wso2is]"
+  ],
+  "default_attributes": {
+    "chef": {
+      "aws_access_key_id": "xx",
+      "aws_secret_access_key": "xx"
+    }
+  }
+}

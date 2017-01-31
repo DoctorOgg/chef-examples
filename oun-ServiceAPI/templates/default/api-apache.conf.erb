@@ -1,0 +1,89 @@
+ExtendedStatus On
+ServerTokens ProductOnly
+
+<VirtualHost *:80>
+	<% if node["oun-ServiceAPI"]["redirect_ssl"] == true %>
+	RewriteEngine On
+	RewriteCond %{HTTP:X-Forwarded-Proto} !https
+	RewriteRule https://%{SERVER_NAME}%{REQUEST_URI} [L,R]
+	<% end %>
+	ServerSignature Off
+	DocumentRoot  <%=node["oun-ServiceAPI"]["sapi_home_dir"]%>
+
+	<Directory  <%=node["oun-ServiceAPI"]["sapi_home_dir"]%>>
+		Options -Indexes +FollowSymLinks -ExecCGI
+		AllowOverride none
+		Require all granted
+		<IfModule mod_rewrite.c>
+			php_value upload_max_filesize 200M
+			php_value post_max_size 200M
+			php_value max_input_time -1
+			php_value max_execution_time 0
+			php_value memory_limit 512M
+			php_value error_reporting <%=node["oun-ServiceAPI"]["php"]["error_reporting"]%>
+			php_flag display_errors <%=node["oun-ServiceAPI"]["php"]["display_errors"]%>
+			php_flag display_startup_errors <%=node["oun-ServiceAPI"]["php"]["display_startup_errors"]%>
+			php_flag html_errors <%=node["oun-ServiceAPI"]["php"]["html_errors"]%>
+			php_flag log_errors <%=node["oun-ServiceAPI"]["php"]["log_errors"]%>
+			RewriteEngine on
+			RewriteCond %{REQUEST_URI} !=/server-status
+			RewriteRule ^phpinfo$ phpinfo.php [L,QSA]
+			RewriteRule ^admin/ - [L]
+			RewriteRule ^api$ index.php?handler=$1 [L,QSA]
+			RewriteRule ^api/(.*)$ index.php?handler=$1 [L,QSA]
+			AddType text/cache-manifest manifest appcache
+		</IfModule>
+	</Directory>
+
+	<Directory  <%=node["oun-ServiceAPI"]["sapi_home_dir"]%>/admin>
+		Options -Indexes +FollowSymLinks -ExecCGI
+		AllowOverride none
+		Require all granted
+		<IfModule mod_rewrite.c>
+			RewriteEngine On
+			RewriteBase /
+			RewriteRule ^ajax/(.*)$ /admin/ajax.php?handler=$1 [L,QSA]
+			RewriteRule ^index\.php$ - [L]
+			RewriteCond %{REQUEST_FILENAME} !-f
+			RewriteCond %{REQUEST_FILENAME} !-d
+			RewriteRule . /admin/index.php [L]
+		</IfModule>
+	</Directory>
+
+	<Directory <%=node["oun-ServiceAPI"]["sapi_home_dir"]%>/elton>
+		Options -Indexes +FollowSymLinks
+		AllowOverride none
+		Require all granted
+		<IfModule mod_rewrite.c>
+			RewriteEngine On
+			RewriteBase /
+			RewriteRule ^ajax/(.*)$ /elton/ajax.php?handler=$1 [L,QSA]
+			RewriteRule ^index\.php$ - [L]
+			RewriteCond %{REQUEST_FILENAME} !-f
+			RewriteCond %{REQUEST_FILENAME} !-d
+			RewriteRule . /elton/index.php [L]
+		</IfModule>
+	</Directory>
+
+	LogLevel warn
+	ErrorLog <%="#{node["oun-ServiceAPI"]["home_dir"]}/logs"%>/api-error.log
+	CustomLog <%="#{node["oun-ServiceAPI"]["home_dir"]}/logs"%>/api-access.log combined
+	DirectoryIndex index.php
+
+	AddType application/vnd.ms-word.document.macroEnabled.12 .docm
+	AddType application/vnd.openxmlformats-officedocument.wordprocessingml.document docx
+	AddType application/vnd.openxmlformats-officedocument.wordprocessingml.template dotx
+	AddType application/vnd.ms-powerpoint.template.macroEnabled.12 potm
+	AddType application/vnd.openxmlformats-officedocument.presentationml.template potx
+	AddType application/vnd.ms-powerpoint.addin.macroEnabled.12 ppam
+	AddType application/vnd.ms-powerpoint.slideshow.macroEnabled.12 ppsm
+	AddType application/vnd.openxmlformats-officedocument.presentationml.slideshow ppsx
+	AddType application/vnd.ms-powerpoint.presentation.macroEnabled.12 pptm
+	AddType application/vnd.openxmlformats-officedocument.presentationml.presentation pptx
+	AddType application/vnd.ms-excel.addin.macroEnabled.12 xlam
+	AddType application/vnd.ms-excel.sheet.binary.macroEnabled.12 xlsb
+	AddType application/vnd.ms-excel.sheet.macroEnabled.12 xlsm
+	AddType application/vnd.openxmlformats-officedocument.spreadsheetml.sheet xlsx
+	AddType application/vnd.ms-excel.template.macroEnabled.12 xltm
+	AddType application/vnd.openxmlformats-officedocument.spreadsheetml.template xltx
+</VirtualHost>

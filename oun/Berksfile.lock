@@ -1,0 +1,36 @@
+DEPENDENCIES
+  apt
+  fail2ban
+  locale
+  ntp
+  os-hardening
+  packages
+  sysctl
+  timezone-ii
+  unattended_upgrades (~> 0.3.0)
+
+GRAPH
+  apt (4.0.1)
+    compat_resource (>= 12.10)
+  chef_handler (1.4.0)
+  compat_resource (12.10.6)
+  fail2ban (2.3.0)
+    yum-epel (>= 0.0.0)
+  locale (1.1.0)
+  ntp (2.0.0)
+    windows (>= 1.38.0)
+  ohai (3.0.1)
+  os-hardening (1.4.1)
+    apt (>= 0.0.0)
+    sysctl (>= 0.3.0)
+    yum (>= 0.0.0)
+  packages (1.0.0)
+  sysctl (0.7.5)
+    ohai (~> 3.0)
+  timezone-ii (0.2.0)
+  unattended_upgrades (0.3.0)
+  windows (1.44.0)
+    chef_handler (>= 0.0.0)
+  yum (3.11.0)
+  yum-epel (0.7.0)
+    yum (>= 3.6.3)

@@ -1,0 +1,22 @@
+[webapp]
+user = www-data
+group = www-data
+listen = <%=node["oun-ServiceAPI"]["webapp"]['php-fpm']['file_socket']%>
+listen.mode = 0666
+pm = dynamic
+pm.max_children = 20
+pm.start_servers = 4
+pm.min_spare_servers = 2
+pm.max_spare_servers = 6
+pm.status_path = /php-fpm-status
+ping.path = /php-fpm-ping
+ping.response = pong
+chdir = /
+php_flag[display_errors] = off
+;php_admin_value[error_log] = /var/log/fpm-php.www.log
+;php_admin_flag[log_errors] = on
+php_admin_value[post_max_size] = <%=node["oun-ServiceAPI"]["webapp"]['php-fpm']['post_max_size']%>
+php_admin_value[max_input_time] = -1
+php_admin_value[max_execution_time] = 0
+php_admin_value[memory_limit] = <%=node["oun-ServiceAPI"]["webapp"]['php-fpm']['memory_limit']%>
+php_admin_value[upload_max_filesize] = <%=node["oun-ServiceAPI"]["webapp"]['php-fpm']['upload_max_filesize']%>

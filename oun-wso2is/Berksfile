@@ -1,0 +1,5 @@
+source "https://supermarket.chef.io"
+cookbook 'oun-wso2is', path: '.'
+cookbook 'oun', path: '../oun'
+cookbook 'java', '~> 1.39.0'
+cookbook 's3_file', '~> 2.7.0'

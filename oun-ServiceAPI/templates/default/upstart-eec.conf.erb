@@ -1,0 +1,12 @@
+description "EEC Publisher"
+start on filesystem or runlevel [2345]
+stop on run level [!2345]
+setuid oun
+console output
+chdir <%=node["oun-ServiceAPI"]["sapi_home_dir"]%>
+
+exec start-stop-daemon --start --make-pidfile --pidfile /opt/oun/run/eec-publisher.pid --exec /usr/bin/php <%=node["oun-ServiceAPI"]["sapi_home_dir"]%>/eec/run.php 2>&1 | /usr/bin/logger -t "eec-publisher"
+
+pre-stop script
+    rm /opt/oun/run/eec-publisher.pid
+end script

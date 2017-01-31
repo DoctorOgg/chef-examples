@@ -1,0 +1,9 @@
+{
+    "attachments": [
+        {
+                "color": "<%= color %>",
+                "title": "<%= @event["check"]["name"] %> - <%= @event["client"]["name"] %>",
+                "text": "<%= @event["check"]["output"].gsub('"', '\\"') %>"
+        }
+    ]
+}

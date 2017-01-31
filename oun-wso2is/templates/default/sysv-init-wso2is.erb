@@ -1,0 +1,25 @@
+#!/bin/bash
+# export JAVA_HOME=/opt/jdk
+# export PATH=${JAVA_HOME}/bin:${PATH}
+export CARBON_HOME="<%=node["oun_wso2is"]["home_dir"]%>/<%=node["oun_wso2is"]["base_wso2is_dir"]%>"
+startcmd='<%=node["oun_wso2is"]["home_dir"]%>/<%=node["oun_wso2is"]["base_wso2is_dir"]%>/bin/wso2server.sh start |/usr/bin/logger -t wso2 &'
+restartcmd='<%=node["oun_wso2is"]["home_dir"]%>/<%=node["oun_wso2is"]["base_wso2is_dir"]%>/bin/wso2server.sh restart  |/usr/bin/logger -t wso2 &'
+stopcmd='<%=node["oun_wso2is"]["home_dir"]%>/<%=node["oun_wso2is"]["base_wso2is_dir"]%>/bin/wso2server.sh stop  |/usr/bin/logger -t wso2 &'
+
+case "$1" in
+start)
+   echo "Starting WSO2 Identity Server ..."
+   su -c "authbind --deep ${startcmd}" <%=node["oun_wso2is"]["user"]%>
+;;
+restart)
+   echo "Re-starting WSO2 Identity Server ..."
+   su -c "authbind --deep ${restartcmd}"  <%=node["oun_wso2is"]["user"]%>
+;;
+stop)
+   echo "Stopping WSO2 Identity Server ..."
+   su -c "${stopcmd}"  <%=node["oun_wso2is"]["user"]%>
+;;
+*)
+   echo "Usage: $0 {start|stop|restart}"
+exit 1
+esac

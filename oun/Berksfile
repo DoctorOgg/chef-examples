@@ -1,0 +1,10 @@
+source "https://supermarket.chef.io"
+cookbook 'ntp'
+cookbook 'os-hardening'
+cookbook 'timezone-ii'
+cookbook 'packages'
+cookbook 'fail2ban'
+cookbook "apt"
+cookbook "locale"
+cookbook 'sysctl'
+cookbook 'unattended_upgrades', '~> 0.3.0'

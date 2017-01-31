@@ -1,0 +1,172 @@
+<?php
+
+/************************************************
+* Main Config
+************************************************/
+$config['central_mongo_db']                                 = "<%=node["oun-ServiceAPI"]["main_config"]["api_central_db"]%>";
+$config['api_baseuri']                                      = "<%=node["oun-ServiceAPI"]["main_config"]["api_baseuri"]%>";
+$config['api_security_enabled']                             = <%=node["oun-ServiceAPI"]["main_config"]["api_security_enabled"]%>;
+$config['api_authtoken_enabled']                            = <%=node["oun-ServiceAPI"]["main_config"]["api_authtoken_enabled"]%>;
+$config['api_authtoken_expire']                             = <%=node["oun-ServiceAPI"]["main_config"]["api_authtoken_expire"]%>;
+$config['api_authtoken_redis_database_index']               = <%=node["oun-ServiceAPI"]["main_config"]["api_authtoken_redis_database_index"]%>;
+$config['api_accesstoken_session_expire']                   = <%=node["oun-ServiceAPI"]["main_config"]["api_accesstoken_session_expire"]%>;
+$config['api_requesttoken_expire']                          = <%=node["oun-ServiceAPI"]["main_config"]["api_requesttoken_expire"]%>;
+$config['cryption_cipher']                                  = <%=node["oun-ServiceAPI"]["main_config"]["api_cryption_cipher"]%>;
+$config['cryption_key']                                     = "<%=node["oun-ServiceAPI"]["main_config"]["api_cryption_key"]%>";
+$config['cryption_mode']                                    = <%=node["oun-ServiceAPI"]["main_config"]["api_cryption_mode"]%>;
+$config['cryption_ivkey']                                   = "<%=node["oun-ServiceAPI"]["main_config"]["api_cryption_ivkey"]%>";
+$config['cache_enabled']                                    = <%=node["oun-ServiceAPI"]["main_config"]["cache_enabled"]%>;
+$config['cache_default_time_policy']                        = "<%=node["oun-ServiceAPI"]["main_config"]["cache_default_time_policy"]%>";
+$config['cache_type']                                       = "<%=node["oun-ServiceAPI"]["main_config"]["cache_type"]%>";
+$config['redisEndpoint']                                    = "<%=node["oun-ServiceAPI"]["main_config"]["webapp_redis_url"]%>";
+$config['send_alerts']                                      = <%=node["oun-ServiceAPI"]["main_config"]["send_alerts"]%>;
+$conifg['raise_email_alerts']                               = <%=node["oun-ServiceAPI"]["main_config"]["raise_email_alerts"]%>;
+$config['log_mongo_enabled']                                = <%=node["oun-ServiceAPI"]["main_config"]["log_mongo_enabled"]%>;
+$config['log_syslog_enabled']                               = <%=node["oun-ServiceAPI"]["main_config"]["log_syslog_enabled"] %>;
+$config['log_webserver_enabled']                            = <%=node["oun-ServiceAPI"]["main_config"]["log_webserver_enabled"]%>;
+$config['log_level']                                        = <%=node["oun-ServiceAPI"]["main_config"]["log_level"]%>; // 0=Off, 1=Critical, 2=Error, 3=Warning, 4=Information, 5=Debug
+$config['log_length']                                       = "<%=node["oun-ServiceAPI"]["main_config"]["log_length"]%>";
+$config['log_archive_length']                               = "<%=node["oun-ServiceAPI"]["main_config"]["log_archive_length"]%>";
+$config['arn_messagequeue']                                 = "<%=node["oun-ServiceAPI"]["main_config"]["api_arn_messagequeue"]%>";
+$config['arn_mq']                                           = $config['<%=node["oun-ServiceAPI"]["main_config"]["api_arn_mq"]%>'];
+$config['arn_prefix']                                       = "<%=node["oun-ServiceAPI"]["main_config"]["api_arn_prefix"]%>";
+$config['topic_environment']                                = "<%=node["oun-ServiceAPI"]["main_config"]["api_topic_environment"]%>";
+$config['s3_bucketname']                                    = "<%=node["oun-ServiceAPI"]["main_config"]["api_s3_bucketname"]%>";
+$config['s3_profile_avatar_path']                           = "<%=node["oun-ServiceAPI"]["main_config"]["api_s3_profile_avatar_path"]%>";
+$config['s3_counselor_report_path']                         = "<%=node["oun-ServiceAPI"]["main_config"]["api_s3_counselor_report_path"]%>";
+$config['s3_content_sections_path']                         = "<%=node["oun-ServiceAPI"]["main_config"]["api_s3_content_sections_path"]%>";
+$config['s3_content_careers_path']                          = "<%=node["oun-ServiceAPI"]["main_config"]["api_s3_content_careers_path"]%>";
+$config['use_sns_as_mq']                                    = <%=node["oun-ServiceAPI"]["main_config"]["api_use_sns_as_mq"]%>;
+$config['canvas_access_token']                              = "<%=node["oun-ServiceAPI"]["main_config"]["canvas_access_token"]%>";
+$config['canvas_api_baseurl']                               = "<%=node["oun-ServiceAPI"]["main_config"]["canvas_baseurl"]%>";
+$config['canvas_accountid']                                 = "<%=node["oun-ServiceAPI"]["main_config"]["canvas_accountid"]%>";
+$config['canvas_url']                                       = "<%=node["oun-ServiceAPI"]["main_config"]["canvas_url"]%>";
+$config['canvas_allow_nonpublished_instructor_enrollment']  = <%=node["oun-ServiceAPI"]["main_config"]["canvas_allow_nonpublished_instructor_enrollment"]%>;
+$config['email_section_ready_canvas']                       = "<%=node["oun-ServiceAPI"]["main_config"]["email_section_ready_canvas"]%>";
+$config['enrollrules_days_before_class']                    = <%=node["oun-ServiceAPI"]["main_config"]["enrollrules_days_before_class"]%>;
+$config['enrollrules_orientation_days_before_class']        = <%=node["oun-ServiceAPI"]["main_config"]["enrollrules_orientation_days_before_class"]%>;
+$config['enrollrules_statuses']                             = "<%=node["oun-ServiceAPI"]["main_config"]["enrollrules_statuses"]%>"; // comma-separated
+$config['content_max_video_size_for_archive']               = <%=node["oun-ServiceAPI"]["main_config"]["content_max_video_size_for_archive"]%>; // max size in bytes
+
+/************************************************
+* EEC Config
+************************************************/
+$config['EECredisEndpoint']                                 = "<%=node["oun-ServiceAPI"]["eec_config"]["redis_url"]%>";
+$config['EECmysql_host']                                    = "<%=node["oun-ServiceAPI"]["eec_config"]["mysql_host"]%>";
+$config['EECmysql_port']                                    = "<%=node["oun-ServiceAPI"]["eec_config"]["mysql_port"]%>";
+$config['EECmysql_username']                                = "<%=node["oun-ServiceAPI"]["eec_config"]["mysql_username"]%>";
+$config['EECmysql_password']                                = "<%=node["oun-ServiceAPI"]["eec_config"]["mysql_password"]%>";
+$config['EECmysql_database']                                = "<%=node["oun-ServiceAPI"]["eec_config"]["mysql_database"]%>";
+
+/************************************************
+* AWS Config
+************************************************/
+$config['api_aws_key']                                      = "<%=node["oun-ServiceAPI"]["aws"]["api_aws_key"]%>";
+$config['api_aws_secret_key']                               = "<%=node["oun-ServiceAPI"]["aws"]["api_aws_secret_key"]%>";
+$config['api_aws_account_id']                               = "<%=node["oun-ServiceAPI"]["aws"]["api_aws_account_id"]%>";
+$config['api_aws_canonical_id']                             = "<%=node["oun-ServiceAPI"]["aws"]["api_aws_canonical_id"]%>";
+$config['api_aws_canonical_name']                           = "<%=node["oun-ServiceAPI"]["aws"]["api_aws_canonical_name"]%>";
+
+/************************************************
+* Mongo Config
+************************************************/
+$config['mongo_host']                                       = "<%=node["oun-ServiceAPI"]["mongo"]["mongo_host"].join(',')%>";
+$config['mongo_mold_host']                                  = "<%=node["oun-ServiceAPI"]["mongo"]["mongo_mold_host"]%>";
+$config['mongo_port']                                       = <%=node["oun-ServiceAPI"]["mongo"]["mongo_port"]%>;
+$config['mongo_db']                                         = "<%=node["oun-ServiceAPI"]["mongo"]["api_mongo_db"]%>";
+$config['mongo_persist']                                    = <%=node["oun-ServiceAPI"]["mongo"]["mongo_persist"]%>;
+$config['mongo_persist_key']                                = "<%=node["oun-ServiceAPI"]["mongo"]["mongo_persist_key"]%>";
+$config['mongo_return']                                     = "<%=node["oun-ServiceAPI"]["mongo"]["api_mongo_return"]%>"; // Set to object
+$config['mongo_query_safety']                               = "<%=node["oun-ServiceAPI"]["mongo"]["mongo_query_safety"]%>";
+$config['mongo_supress_connect_error']                      = <%=node["oun-ServiceAPI"]["mongo"]["mongo_supress_connect_error"]%>;
+$config['host_db_flag']                                     = <%=node["oun-ServiceAPI"]["mongo"]["mongo_host_db_flag"]%>;
+$config['mongo_slaveok']                                    = <%=node["oun-ServiceAPI"]["mongo"]["mongo_slaveok"]%>;
+$config['mongo_user']                                       = ""; // Leave blank, USE NEXT OPTION INSTEAD
+$config['mongo_pass']                                       = ""; // Leave blank, USE NEXT OPTION INSTEAD
+$config['mongo_option_user']                                = "<%=node["oun-ServiceAPI"]["mongo"]["mongo_option_user"]%>";
+$config['mongo_option_pass']                                = "<%=node["oun-ServiceAPI"]["mongo"]["mongo_option_pass"]%>";
+$config['mongo_db_api']                                     = "<%=node["oun-ServiceAPI"]["mongo"]["api_mongo_db_api"]%>";
+$config['mongo_db_user']                                    = "<%=node["oun-ServiceAPI"]["mongo"]["api_mongo_db_user"]%>";
+$config['mongo_db_eventlog']                                = "<%=node["oun-ServiceAPI"]["mongo"]["api_mongo_db_eventlog"]%>";
+$config['mongo_replicaset']                                 = "<%=node["oun-ServiceAPI"]["mongo"]["mongo_replicaset"]%>";
+$config['mongo_timeout']                                    = <%=node["oun-ServiceAPI"]["mongo"]["mongo_timeout"]%>;
+$config['eci_db']                                           = "<%=node["oun-ServiceAPI"]["mongo"]["eci_db"]%>";
+$config['leads_db']                                         = "<%=node["oun-ServiceAPI"]["mongo"]["leads_db"]%>";
+$config['events_db']                                        = "<%=node["oun-ServiceAPI"]["mongo"]["events_db"]%>";
+$config['security_db']                                      = "<%=node["oun-ServiceAPI"]["mongo"]["security_db"]%>";
+$config['resources_db']                                     = "<%=node["oun-ServiceAPI"]["mongo"]["resources_db"]%>";
+$config['mq_db']                                            = "<%=node["oun-ServiceAPI"]["mongo"]["mq_db"]%>";
+$config['oauth_db']                                         = "<%=node["oun-ServiceAPI"]["mongo"]["oauth_db"]%>";
+
+/************************************************
+* LDAP Config
+************************************************/
+$config['ldap_url']                                         = "<%=node["oun-ServiceAPI"]["ldap"]["ldap_url"]%>";
+$config['ldap_escadmin_base']                               = "<%=node["oun-ServiceAPI"]["ldap"]["ldap_escadmin_base"]%>";
+$config['ldap_escadmin_lookupfield']                        = "<%=node["oun-ServiceAPI"]["ldap"]["ldap_escadmin_lookupfield"]%>";
+$config['ldap_base']                                        = "<%=node["oun-ServiceAPI"]["ldap"]["ldap_base"]%>";
+$config['ldap_auth_lookupfield']                            = "<%=node["oun-ServiceAPI"]["ldap"]["ldap_auth_lookupfield"]%>";
+$config['ldap_version']                                     = "<%=node["oun-ServiceAPI"]["ldap"]["ldap_version"]%>";
+
+/************************************************
+* SALESFORCE
+************************************************/
+$config['salesforce_username']                              = "<%=node["oun-ServiceAPI"]["salesforce"]["api_salesforce_username"]%>";
+$config['salesforce_password']                              = "<%=node["oun-ServiceAPI"]["salesforce"]["api_salesforce_password"]%>";
+$config['salesforce_token']                                 = "<%=node["oun-ServiceAPI"]["salesforce"]["api_salesforce_token"]%>";
+$config['salesforce_use_sandbox']                           = <%=node["oun-ServiceAPI"]["salesforce"]["api_salesforce_use_sandbox"]%>;
+
+
+/************************************************
+ * REMINDER NOTIFICATIONS
+ ************************************************/
+$config["reminder_avatar_period_after_login"]               = "<%=node["oun-ServiceAPI"]["reminders"]["avatar_period_after_login"]%>";
+$config["reminder_assignment_write_period_before_due"]      = "<%=node["oun-ServiceAPI"]["reminders"]["assignment_write_period_before_due"]%>";
+$config["reminder_assignment_discussion_period_before_due"] = "<%=node["oun-ServiceAPI"]["reminders"]["assignment_discussion_period_before_due"]%>";
+$config["reminder_assignment_group_period_before_due"]      = "<%=node["oun-ServiceAPI"]["reminders"]["assignment_group_period_before_due"]%>";
+
+/************************************************
+ * WSO2
+ ************************************************/
+$config['wso2_remote_user_store_wsdl_url']                  = "<%=node["oun-ServiceAPI"]["wso2"]['wso2_remote_user_store_wsdl_url']%>";
+$config['wso2_user_info_recovery_wsdl_url']                 = "<%=node["oun-ServiceAPI"]["wso2"]['wso2_user_info_recovery_wsdl_url']%>";
+$config['idr_bulk_add_user_strategy']                       = "<%=node["oun-ServiceAPI"]["wso2"]["idr_bulk_add_user_strategy"]%>";
+
+/************************************************
+ * SAML
+ ************************************************/
+$config['idp_sso_target_url']                               = "<%=node["oun-ServiceAPI"]["saml"]["idp_sso_target_url"]%>";
+$config['assertion_consumer_service_url']                   = "<%=node["oun-ServiceAPI"]["saml"]["assertion_consumer_service_url"]%>";
+$config['saml_issuer']                                      = "<%=node["oun-ServiceAPI"]["saml"]["saml_issuer"] %>";
+$config['idr_logout_servlet']                               = "<%=node["oun-ServiceAPI"]["saml"]["idr_logout_servlet"]%>";
+$config['idr_login_servlet']                                = "<%=node["oun-ServiceAPI"]["saml"]["idr_login_servlet"]%>";
+$config['x509certificate_file']                             = "";
+$config['name_identifier_format']                           = "<%=node["oun-ServiceAPI"]["saml"]["name_identifier_format"]%>";
+
+/************************************************
+ * Viddler
+ ************************************************/
+$config['viddlerUsername']                                  = "<%=node["oun-ServiceAPI"]["viddler"]["viddlerUsername"]%>";
+$config['viddlerPassword']                                  = "<%=node["oun-ServiceAPI"]["viddler"]["viddlerPassword"]%>";
+$config['viddlerApiKey']                                    = "<%=node["oun-ServiceAPI"]["viddler"]["viddlerApiKey"]%>";
+
+/************************************************
+ * unused, but still required settings.....
+ ************************************************/
+$config['idr_user']                                         = "SETME";
+$config['idr_password']                                     = "SETME";
+$config['idr_url']                                          = "SETME";
+$config['idr_api']                                          = "SETME";
+$config['idr_student_usertype']                             = "SETME";
+$config['idr_name']                                         = "SETME";
+$config['initial_user_state']                               = "SETME";
+
+/************************************************
+ * ZENDESK
+ ************************************************/
+$config['zendesk_subdomain']                                = "<%=node["oun-ServiceAPI"]["zendesk"]["subdomain"]%>";
+$config['zendesk_username']                                 = "<%=node["oun-ServiceAPI"]["zendesk"]["username"]%>";
+$config['zendesk_token']                                    = "<%=node["oun-ServiceAPI"]["zendesk"]["token"]%>";
+$config['zendesk_newticketparams']                          = "<%=@zendesk_newticketparams%>";
+
+?>

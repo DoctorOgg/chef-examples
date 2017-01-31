@@ -1,0 +1,45 @@
+var config                           = {};
+
+// SERVER CONFIG
+// Indicate what port you want Node to run on
+config.server                        = {};
+config.server.port                   = <%=node["oun-ServiceAPI"]["eec_config"]["listen_port"]%>;
+config.server.ssl_enabled            = <%=node["oun-ServiceAPI"]["eec_config"]["ssl"]["enabled"]%>;
+config.server.ssl_port               = <%=node["oun-ServiceAPI"]["eec_config"]["ssl_listen_port"]%>;
+config.server.key_pem_file_location  = "<%="#{node["oun-ServiceAPI"]["eec_config"]["ssl"]["ssl_dir"]}/#{node["oun-ServiceAPI"]["eec_config"]["ssl"]["key"]}"%>";
+config.server.cert_pem_file_location = "<%="#{node["oun-ServiceAPI"]["eec_config"]["ssl"]["ssl_dir"]}/#{node["oun-ServiceAPI"]["eec_config"]["ssl"]["cert"]}"%>";
+config.server.ca_pem_file_location   = "<%="#{node["oun-ServiceAPI"]["eec_config"]["ssl"]["ssl_dir"]}/#{node["oun-ServiceAPI"]["eec_config"]["ssl"]["cert_chain_file"]}"%>";
+config.server.ciphers                = "<%=node["oun-ServiceAPI"]["eec_config"]["ssl"]["ciphers"]%>";
+config.server.honorCipherOrder       = <%=node["oun-ServiceAPI"]["eec_config"]["ssl"]["honorCipherOrder"]%>;
+config.server.secureProtocol         = "<%=node["oun-ServiceAPI"]["eec_config"]["ssl"]["secureProtocol"]%>";
+config.server.secureOptions          = <%=node["oun-ServiceAPI"]["eec_config"]["ssl"]["secureOptions"]%>;
+
+
+// EEC DATABASE CONFIG
+// This needs to be the analytics database that is gathering formatted events
+config.database                      = {};
+config.database.host                 = '<%=node["oun-ServiceAPI"]["eec_config"]["mysql_host"]%>';
+config.database.username             = '<%=node["oun-ServiceAPI"]["eec_config"]["mysql_username"]%>';
+config.database.password             = '<%=node["oun-ServiceAPI"]["eec_config"]["mysql_password"]%>';
+config.database.database             = '<%=node["oun-ServiceAPI"]["eec_config"]["mysql_database"]%>';
+
+
+// ACCESS-CONTROL-ALLOW CONFIG
+// This allows web apps to receive socket pushes.
+config.accesscontrolallow            = {};
+config.accesscontrolallow.origin     = '<%=node["oun-ServiceAPI"]["webapp"]['fqdn']%>';
+
+
+// REDIS CONFIG
+// This needs to be the redis instance that is used by the ESC
+config.redis                         = {};
+config.redis.host                    = '<%=URI.parse(node["oun-ServiceAPI"]["eec_config"]["redis_url"]).host%>';
+config.redis.port                    = <%=URI.parse(node["oun-ServiceAPI"]["eec_config"]["redis_url"]).port%>; //default port that redis runs on
+
+
+// SECURITY CONFIG
+config.security                      = {};
+config.security.redis_dbindex        = <%=node["oun-ServiceAPI"]["eec_config"]["security_redis_dbindex"]%>;
+
+
+module.exports                       = config;

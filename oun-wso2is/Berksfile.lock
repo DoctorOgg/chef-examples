@@ -1,0 +1,38 @@
+DEPENDENCIES
+  java (~> 1.39.0)
+  oun
+    path: ../oun
+  oun-wso2is
+    path: .
+  s3_file (~> 2.7.0)
+
+GRAPH
+  apt (4.0.1)
+    compat_resource (>= 12.10)
+  chef_handler (1.4.0)
+  compat_resource (12.10.6)
+  java (1.39.0)
+    apt (>= 0.0.0)
+  locale (1.1.0)
+  ntp (2.0.0)
+    windows (>= 1.38.0)
+  ohai (4.1.1)
+    compat_resource (>= 12.10)
+  oun (0.1.0)
+    apt (>= 0.0.0)
+    locale (>= 0.0.0)
+    ntp (>= 0.0.0)
+    sysctl (>= 0.0.0)
+    timezone-ii (>= 0.0.0)
+    unattended_upgrades (>= 0.0.0)
+  oun-wso2is (0.1.0)
+    java (~> 1.39.0)
+    oun (>= 0.0.0)
+    s3_file (~> 2.7.0)
+  s3_file (2.7.0)
+  sysctl (0.7.0)
+    ohai (>= 0.0.0)
+  timezone-ii (0.2.0)
+  unattended_upgrades (0.3.0)
+  windows (1.44.0)
+    chef_handler (>= 0.0.0)

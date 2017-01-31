@@ -1,0 +1,12 @@
+name             'oun-sensu'
+maintainer       'One University Network'
+maintainer_email 'ops@oneuni.net'
+license          'All rights reserved'
+description      'Installs/Configures oun-sensu'
+long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
+version          '0.1.0'
+depends          'oun'
+depends          'sensu'
+depends          'uchiwa'
+issues_url       'http://oneuni.net'
+source_url       'http://oneuni.net'

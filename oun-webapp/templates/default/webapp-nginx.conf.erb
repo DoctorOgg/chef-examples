@@ -1,0 +1,81 @@
+server {
+	if ($http_x_forwarded_proto != 'https') { rewrite ^ https://$host$request_uri? permanent; }
+	listen 80;
+	client_max_body_size <%=node["oun-ServiceAPI"]["webapp"]['php-fpm']['post_max_size']%>;
+	server_name <%=URI.parse(node["oun-ServiceAPI"]["webapp"]['fqdn']).host%>;
+	root <%=node["oun-ServiceAPI"]["webapp"]['web_root']%>;
+
+	index index.php;
+
+	include mime.types;
+	types {
+		application/vnd.ms-word.document.macroEnabled.12 docm;
+		application/vnd.openxmlformats-officedocument.wordprocessingml.document docx;
+		application/vnd.openxmlformats-officedocument.wordprocessingml.template dotx;
+		application/vnd.ms-powerpoint.template.macroEnabled.12 potm;
+		application/vnd.openxmlformats-officedocument.presentationml.template potx;
+		application/vnd.ms-powerpoint.addin.macroEnabled.12 ppam;
+		application/vnd.ms-powerpoint.slideshow.macroEnabled.12 ppsm;
+		application/vnd.openxmlformats-officedocument.presentationml.slideshow ppsx;
+		application/vnd.ms-powerpoint.presentation.macroEnabled.12 pptm;
+		application/vnd.openxmlformats-officedocument.presentationml.presentation pptx;
+		application/vnd.ms-excel.addin.macroEnabled.12 xlam;
+		application/vnd.ms-excel.sheet.binary.macroEnabled.12 xlsb;
+		application/vnd.ms-excel.sheet.macroEnabled.12 xlsm;
+		application/vnd.openxmlformats-officedocument.spreadsheetml.sheet xlsx;
+		application/vnd.ms-excel.template.macroEnabled.12 xltm;
+		application/vnd.openxmlformats-officedocument.spreadsheetml.template xltx;
+	}
+
+	location = /favicon.ico {
+		log_not_found off;
+		access_log off;
+	}
+
+	location = /robots.txt {
+		allow all;
+		log_not_found off;
+		access_log off;
+	}
+
+	location /ajax {
+		rewrite ^/ajax/(.*)$ /ajax.php?handler=$1 break;
+		include fastcgi.conf;
+		fastcgi_read_timeout 120;
+		fastcgi_intercept_errors on;
+		fastcgi_pass unix:<%=node["oun-ServiceAPI"]["webapp"]['php-fpm']['file_socket']%>;
+	}
+
+	location /post {
+		rewrite ^/post/(.*)$ /post.php?handler=$1 break;
+		include fastcgi.conf;
+		fastcgi_read_timeout 120;
+		fastcgi_intercept_errors on;
+		fastcgi_pass unix:<%=node["oun-ServiceAPI"]["webapp"]['php-fpm']['file_socket']%>;
+	}
+
+	location /get {
+		rewrite ^/get/(.*)$ /get.php?handler=$1 break;
+		include fastcgi.conf;
+		fastcgi_read_timeout 120;
+		fastcgi_intercept_errors on;
+		fastcgi_pass unix:<%=node["oun-ServiceAPI"]["webapp"]['php-fpm']['file_socket']%>;
+	}
+
+	location / {
+		try_files $uri $uri/ /index.php?$args;
+	}
+
+	location ~ \.php$ {
+		#NOTE: You should have "cgi.fix_pathinfo = 0;" in php.ini
+		include fastcgi.conf;
+		fastcgi_read_timeout 120;
+		fastcgi_intercept_errors on;
+		fastcgi_pass unix://<%=node["oun-ServiceAPI"]["webapp"]['php-fpm']['file_socket']%>;
+	}
+
+	location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+		expires max;
+		log_not_found off;
+	}
+}

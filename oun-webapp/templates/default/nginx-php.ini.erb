@@ -1,0 +1,345 @@
+[PHP]
+engine = On
+short_open_tag = On
+asp_tags = Off
+precision = 14
+y2k_compliance = On
+output_buffering = 4096
+zlib.output_compression = Off
+implicit_flush = Off
+serialize_precision = 17
+allow_call_time_pass_reference = Off
+safe_mode = Off
+safe_mode_gid = Off
+safe_mode_include_dir =
+safe_mode_exec_dir =
+safe_mode_allowed_env_vars = PHP_
+safe_mode_protected_env_vars = LD_LIBRARY_PATH
+disable_functions = pcntl_alarm,pcntl_fork,pcntl_waitpid,pcntl_wait,pcntl_wifexited,pcntl_wifstopped,pcntl_wifsignaled,pcntl_wexitstatus,pcntl_wtermsig,pcntl_wstopsig,pcntl_signal,pcntl_signal_dispatch,pcntl_get_last_error,pcntl_strerror,pcntl_sigprocmask,pcntl_sigwaitinfo,pcntl_sigtimedwait,pcntl_exec,pcntl_getpriority,pcntl_setpriority,
+disable_classes =
+zend.enable_gc = On
+expose_php = Off
+max_execution_time = 30
+max_input_time = 60
+memory_limit = <%=node["oun-ServiceAPI"]["webapp"]['php-fpm']['memory_limit']%>
+error_reporting = E_ERROR
+display_errors = Off
+display_startup_errors = Off
+log_errors = On
+log_errors_max_len = 1024
+ignore_repeated_errors = Off
+ignore_repeated_source = Off
+report_memleaks = On
+track_errors = Off
+html_errors = Off
+variables_order = "GPCS"
+request_order = "GP"
+register_globals = Off
+register_long_arrays = Off
+register_argc_argv = Off
+auto_globals_jit = On
+post_max_size = <%=node["oun-ServiceAPI"]["webapp"]['php-fpm']['post_max_size']%>
+magic_quotes_gpc = Off
+magic_quotes_runtime = Off
+magic_quotes_sybase = Off
+auto_prepend_file =
+auto_append_file =
+default_mimetype = "text/html"
+doc_root =
+user_dir =
+enable_dl = Off
+gi.fix_pathinfo = 0;
+file_uploads = On
+upload_max_filesize = <%=node["oun-ServiceAPI"]["webapp"]['php-fpm']['upload_max_filesize']%>
+max_file_uploads = 20
+allow_url_fopen = On
+allow_url_include = Off
+default_socket_timeout = 60
+
+[Pdo_mysql]
+pdo_mysql.cache_size = 2000
+pdo_mysql.default_socket=
+
+[Syslog]
+define_syslog_variables  = Off
+
+[mail function]
+SMTP = localhost
+smtp_port = 25
+mail.add_x_header = On
+
+[SQL]
+sql.safe_mode = Off
+
+[ODBC]
+odbc.allow_persistent = On
+odbc.check_persistent = On
+odbc.max_persistent = -1
+odbc.max_links = -1
+odbc.defaultlrl = 4096
+odbc.defaultbinmode = 1
+
+[MySQL]
+mysql.allow_local_infile = On
+mysql.allow_persistent = On
+mysql.cache_size = 2000
+mysql.max_persistent = -1
+mysql.max_links = -1
+mysql.default_port =
+mysql.default_socket =
+mysql.default_host =
+mysql.default_user =
+mysql.default_password =
+mysql.connect_timeout = 60
+mysql.trace_mode = Off
+
+[MySQLi]
+mysqli.max_persistent = -1
+mysqli.allow_persistent = On
+mysqli.max_links = -1
+mysqli.cache_size = 2000
+mysqli.default_port = 3306
+mysqli.default_socket =
+mysqli.default_host =
+mysqli.default_user =
+mysqli.default_pw =
+mysqli.reconnect = Off
+
+[mysqlnd]
+mysqlnd.collect_statistics = On
+mysqlnd.collect_memory_statistics = Off
+
+[PostgreSQL]
+pgsql.allow_persistent = On
+pgsql.auto_reset_persistent = Off
+pgsql.max_persistent = -1
+pgsql.max_links = -1
+pgsql.ignore_notice = 0
+pgsql.log_notice = 0
+
+[bcmath]
+bcmath.scale = 0
+
+[Session]
+session.save_handler = files
+session.save_path = "/tmp"
+session.use_cookies = 0
+session.use_only_cookies = 0
+session.name = PHPSESSID
+session.auto_start = 0
+session.cookie_lifetime = 0
+session.cookie_domain =
+session.cookie_httponly =
+session.serialize_handler = php
+session.gc_probability = 0
+session.gc_divisor = 1000
+session.gc_maxlifetime = 1440
+session.bug_compat_42 = Off
+session.bug_compat_warn = Off
+session.referer_check =
+session.entropy_length = 0
+session.cache_limiter = nocache
+session.cache_expire = 180
+session.use_trans_sid = 0
+session.hash_function = 0
+session.hash_bits_per_character = 5
+url_rewriter.tags = "a=href,area=href,frame=src,input=src,form=fakeentry"
+
+[Assertion]
+; Assert(expr); active by default.
+; http://php.net/assert.active
+;assert.active = On
+
+; Issue a PHP warning for each failed assertion.
+; http://php.net/assert.warning
+;assert.warning = On
+
+; Don't bail out by default.
+; http://php.net/assert.bail
+;assert.bail = Off
+
+; User-function to be called if an assertion fails.
+; http://php.net/assert.callback
+;assert.callback = 0
+
+; Eval the expression with current error_reporting().  Set to true if you want
+; error_reporting(0) around the eval().
+; http://php.net/assert.quiet-eval
+;assert.quiet_eval = 0
+
+[COM]
+; path to a file containing GUIDs, IIDs or filenames of files with TypeLibs
+; http://php.net/com.typelib-file
+;com.typelib_file =
+
+; allow Distributed-COM calls
+; http://php.net/com.allow-dcom
+;com.allow_dcom = true
+
+; autoregister constants of a components typlib on com_load()
+; http://php.net/com.autoregister-typelib
+;com.autoregister_typelib = true
+
+; register constants casesensitive
+; http://php.net/com.autoregister-casesensitive
+;com.autoregister_casesensitive = false
+
+; show warnings on duplicate constant registrations
+; http://php.net/com.autoregister-verbose
+;com.autoregister_verbose = true
+
+; The default character set code-page to use when passing strings to and from COM objects.
+; Default: system ANSI code page
+;com.code_page=
+
+[mbstring]
+; language for internal character representation.
+; http://php.net/mbstring.language
+;mbstring.language = Japanese
+
+; internal/script encoding.
+; Some encoding cannot work as internal encoding.
+; (e.g. SJIS, BIG5, ISO-2022-*)
+; http://php.net/mbstring.internal-encoding
+;mbstring.internal_encoding = EUC-JP
+
+; http input encoding.
+; http://php.net/mbstring.http-input
+;mbstring.http_input = auto
+
+; http output encoding. mb_output_handler must be
+; registered as output buffer to function
+; http://php.net/mbstring.http-output
+;mbstring.http_output = SJIS
+
+; enable automatic encoding translation according to
+; mbstring.internal_encoding setting. Input chars are
+; converted to internal encoding by setting this to On.
+; Note: Do _not_ use automatic encoding translation for
+;       portable libs/applications.
+; http://php.net/mbstring.encoding-translation
+;mbstring.encoding_translation = Off
+
+; automatic encoding detection order.
+; auto means
+; http://php.net/mbstring.detect-order
+;mbstring.detect_order = auto
+
+; substitute_character used when character cannot be converted
+; one from another
+; http://php.net/mbstring.substitute-character
+;mbstring.substitute_character = none;
+
+; overload(replace) single byte functions by mbstring functions.
+; mail(), ereg(), etc are overloaded by mb_send_mail(), mb_ereg(),
+; etc. Possible values are 0,1,2,4 or combination of them.
+; For example, 7 for overload everything.
+; 0: No overload
+; 1: Overload mail() function
+; 2: Overload str*() functions
+; 4: Overload ereg*() functions
+; http://php.net/mbstring.func-overload
+;mbstring.func_overload = 0
+
+; enable strict encoding detection.
+;mbstring.strict_detection = Off
+
+; This directive specifies the regex pattern of content types for which mb_output_handler()
+; is activated.
+; Default: mbstring.http_output_conv_mimetype=^(text/|application/xhtml\+xml)
+;mbstring.http_output_conv_mimetype=
+
+; Allows to set script encoding. Only affects if PHP is compiled with --enable-zend-multibyte
+; Default: ""
+;mbstring.script_encoding=
+
+[gd]
+; Tell the jpeg decode to ignore warnings and try to create
+; a gd image. The warning will then be displayed as notices
+; disabled by default
+; http://php.net/gd.jpeg-ignore-warning
+;gd.jpeg_ignore_warning = 0
+
+[exif]
+; Exif UNICODE user comments are handled as UCS-2BE/UCS-2LE and JIS as JIS.
+; With mbstring support this will automatically be converted into the encoding
+; given by corresponding encode setting. When empty mbstring.internal_encoding
+; is used. For the decode settings you can distinguish between motorola and
+; intel byte order. A decode setting cannot be empty.
+; http://php.net/exif.encode-unicode
+;exif.encode_unicode = ISO-8859-15
+
+; http://php.net/exif.decode-unicode-motorola
+;exif.decode_unicode_motorola = UCS-2BE
+
+; http://php.net/exif.decode-unicode-intel
+;exif.decode_unicode_intel    = UCS-2LE
+
+; http://php.net/exif.encode-jis
+;exif.encode_jis =
+
+; http://php.net/exif.decode-jis-motorola
+;exif.decode_jis_motorola = JIS
+
+; http://php.net/exif.decode-jis-intel
+;exif.decode_jis_intel    = JIS
+
+[Tidy]
+; The path to a default tidy configuration file to use when using tidy
+; http://php.net/tidy.default-config
+;tidy.default_config = /usr/local/lib/php/default.tcfg
+
+; Should tidy clean and repair output automatically?
+; WARNING: Do not use this option if you are generating non-html content
+; such as dynamic images
+; http://php.net/tidy.clean-output
+tidy.clean_output = Off
+
+[soap]
+; Enables or disables WSDL caching feature.
+; http://php.net/soap.wsdl-cache-enabled
+soap.wsdl_cache_enabled=1
+
+; Sets the directory name where SOAP extension will put cache files.
+; http://php.net/soap.wsdl-cache-dir
+soap.wsdl_cache_dir="/tmp"
+
+; (time to live) Sets the number of second while cached file will be used
+; instead of original one.
+; http://php.net/soap.wsdl-cache-ttl
+soap.wsdl_cache_ttl=86400
+
+; Sets the size of the cache limit. (Max. number of WSDL files to cache)
+soap.wsdl_cache_limit = 5
+
+[sysvshm]
+; A default size of the shared memory segment
+;sysvshm.init_mem = 10000
+
+[ldap]
+; Sets the maximum number of open links or -1 for unlimited.
+ldap.max_links = -1
+
+[mcrypt]
+; For more information about mcrypt settings see http://php.net/mcrypt-module-open
+
+; Directory where to load mcrypt algorithms
+; Default: Compiled in into libmcrypt (usually /usr/local/lib/libmcrypt)
+;mcrypt.algorithms_dir=
+
+; Directory where to load mcrypt modes
+; Default: Compiled in into libmcrypt (usually /usr/local/lib/libmcrypt)
+;mcrypt.modes_dir=
+
+[dba]
+;dba.default_handler=
+
+[xsl]
+; Write operations from within XSLT are disabled by default.
+; XSL_SECPREF_CREATE_DIRECTORY | XSL_SECPREF_WRITE_NETWORK | XSL_SECPREF_WRITE_FILE = 44
+; Set it to 0 to allow all operations
+;xsl.security_prefs = 44
+
+; Local Variables:
+; tab-width: 4
+; End:

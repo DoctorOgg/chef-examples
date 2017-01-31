@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Server port="8005" shutdown="SHUTDOWN">
+  <Service className="org.wso2.carbon.tomcat.ext.service.ExtendedStandardService" name="Catalina">
+    <Connector  protocol="org.apache.coyote.http11.Http11NioProtocol"
+                proxyPort="443"
+                scheme="https"
+                secure="true"
+                proxyName="<%=node["oun_wso2is"]["hostname"]%>"
+                port="<%=node["oun_wso2is"]["http_port"]%>"
+                redirectPort="<%=node["oun_wso2is"]["https_port"]%>"
+                bindOnInit="false"
+                maxHttpHeaderSize="8192"
+                acceptorThreadCount="2"
+                maxThreads="250"
+                minSpareThreads="50"
+                disableUploadTimeout="false"
+                connectionUploadTimeout="120000"
+                maxKeepAliveRequests="200"
+                acceptCount="200"
+                server="WSO2 Carbon Server"
+                compression="on"
+                compressionMinSize="2048"
+                noCompressionUserAgents="gozilla, traviata"
+                compressableMimeType="text/html,text/javascript,application/x-javascript,application/javascript,application/xml,text/css,application/xslt+xml,text/xsl,image/gif,image/jpg,image/jpeg"
+                URIEncoding="UTF-8"/>
+
+	    <!-- <Connector  protocol="org.apache.coyote.http11.Http11NioProtocol"
+	                port="<%=node["oun_wso2is"]["https_port"]%>"
+	                bindOnInit="false"
+                    sslProtocol="TLSv1.1"
+                    ciphers="TLS_RSA_WITH_AES_128_CBC_SHA,SSL_RSA_WITH_3DES_EDE_CBC_SHA"
+	                maxHttpHeaderSize="8192"
+	                acceptorThreadCount="2"
+	                maxThreads="250"
+	                minSpareThreads="50"
+	                disableUploadTimeout="false"
+	                enableLookups="false"
+	                connectionUploadTimeout="120000"
+	                maxKeepAliveRequests="200"
+	                acceptCount="200"
+	                server="WSO2 Carbon Server"
+	                clientAuth="false"
+	                compression="on"
+	                scheme="https"
+	                secure="true"
+	                SSLEnabled="true"
+	                compressionMinSize="2048"
+	                noCompressionUserAgents="gozilla, traviata"
+	                compressableMimeType="text/html,text/javascript,application/x-javascript,application/javascript,application/xml,text/css,application/xslt+xml,text/xsl,image/gif,image/jpg,image/jpeg"
+	                URIEncoding="UTF-8"/> -->
+
+
+
+	    <Engine name="Catalina" defaultHost="localhost">
+	      <Realm className="org.wso2.carbon.tomcat.ext.realms.CarbonTomcatRealm"/>
+	      <Host name="localhost" unpackWARs="true" deployOnStartup="false" autoDeploy="false" appBase="${carbon.home}/repository/deployment/server/webapps/">
+	          <Valve className="org.wso2.carbon.tomcat.ext.valves.CarbonContextCreatorValve"/>
+	          <Valve className="org.apache.catalina.valves.AccessLogValve" directory="${carbon.home}/repository/logs"
+	               prefix="http_access_" suffix=".log"
+	               pattern="combined" />
+	          <Valve className="org.wso2.carbon.tomcat.ext.valves.CarbonStuckThreadDetectionValve" threshold="600"/>
+	          <Valve className="org.wso2.carbon.tomcat.ext.valves.CompositeValve"/>
+	      </Host>
+	    </Engine>
+	  </Service>
+	</Server>

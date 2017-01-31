@@ -1,0 +1,28 @@
+[sssd]
+config_file_version = 2
+services = nss, pam, ssh
+domains = LDAP
+
+[nss]
+reconnection_retries = 6
+
+[pam]
+reconnection_retries = 6
+
+[domain/LDAP]
+id_provider = ldap
+auth_provider = ldap
+chpass_provider = ldap
+ldap_schema = rfc2307
+ldap_uri = <%=node["oun"]["ldap"]["uri"].join(',')%>
+ldap_search_base = <%=node["oun"]["ldap"]["search_base"]%>
+ldap_id_use_start_tls = true
+ldap_chpass_uri = <%=node["oun"]["ldap"]["master_uri"]%>
+ldap_default_bind_dn = <%=node["oun"]["ldap"]["bind_dn"]%>
+ldap_default_authtok_type = password
+ldap_default_authtok = <%=node["oun"]["ldap"]["bind_dn_pass"]%>
+enumerate = true
+cache_credentials = true
+ldap_user_ssh_public_key = <%=node["oun"]["ldap"]["sshkey_attr"]%>
+ldap_tls_cacert = /etc/ssl/certs/<%=node["oun"]["ldap"]["ca_cert"]%>
+ldap_tls_reqcert = allow

@@ -1,0 +1,17 @@
+description "EEC Server"
+start on filesystem or runlevel [2345]
+stop on run level [!2345]
+setuid oun
+console output
+chdir <%=node["oun-ServiceAPI"]["eec_config"]["home"]%>
+export NODE_ENV=production
+
+<% if node["oun-ServiceAPI"]["eec_config"]["enable_auth_bind"] == true %>
+exec start-stop-daemon --start --make-pidfile --pidfile <%=node["oun-ServiceAPI"]["home_dir"]%>/run/eec-server.pid --exec /usr/bin/authbind /usr/local/bin/node /opt/oun/eec/server.js 2>&1 | /usr/bin/logger -t "eec-server"
+<% else %>
+exec start-stop-daemon --start --make-pidfile --pidfile <%=node["oun-ServiceAPI"]["home_dir"]%>/eec-server.pid --exec /usr/local/bin/node /opt/oun/eec/server.js 2>&1 | /usr/bin/logger -t "eec-server"
+<% end %>
+
+pre-stop script
+    rm <%=node["oun-ServiceAPI"]["home_dir"]%>/run/eec-server.pid
+end script

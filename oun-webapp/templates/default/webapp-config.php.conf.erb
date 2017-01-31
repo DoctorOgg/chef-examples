@@ -1,0 +1,39 @@
+<?php
+
+$config['api_baseurl']                          = "<%=node["oun-ServiceAPI"]["main_config"]["api_baseuri"]%>";
+$config['api_key']                              = "<%=node["oun-ServiceAPI"]["webapp"]["api_key"]%>";
+$config['app_id']                               = "<%=node["oun-ServiceAPI"]["webapp"]["app_id"]%>";
+$config['redisEndpoint']                        = "<%=node["oun-ServiceAPI"]["main_config"]["webapp_redis_url"]%>";
+$config['redisSessionDatabase']                 = "<%=node["oun-ServiceAPI"]["webapp"]["redisSessionDatabase"]%>";
+$config['env']                                  = "<%=node["oun-ServiceAPI"]["webapp"]["env"]%>";
+$config['analyticsHost']                        = "<%=node["oun-ServiceAPI"]["eec_config"]["fqdn"]%>";
+$config['wso2_login_url']                       = "<%=node["oun-ServiceAPI"]["webapp"]["wso2_login_url"]%>";
+
+/************************************************
+ * Viddler
+ ************************************************/
+$config['viddlerUsername']                      = "<%=node["oun-ServiceAPI"]["viddler"]["viddlerUsername"]%>";
+$config['viddlerPassword']                      = "<%=node["oun-ServiceAPI"]["viddler"]["viddlerPassword"]%>";
+$config['viddlerApiKey']                        = "<%=node["oun-ServiceAPI"]["viddler"]["viddlerApiKey"]%>";
+
+/************************************************
+ * FEATURES
+ ************************************************/
+$config['feature_login_lookup_redirect_in_esc'] = <%=node["oun-ServiceAPI"]["webapp"]["features"]["feature_login_lookup_redirect_in_esc"]%>;
+$config['feature_blogs']                        = <%=node["oun-ServiceAPI"]["webapp"]["features"]["feature_blogs"]%>;
+$config['feature_settings']                     = <%=node["oun-ServiceAPI"]["webapp"]["features"]["feature_settings"]%>;
+$config['feature_course_list']                  = <%=node["oun-ServiceAPI"]["webapp"]["features"]["feature_course_list"]%>;
+$config['feature_profile']                      = <%=node["oun-ServiceAPI"]["webapp"]["features"]["feature_profile"]%>;
+$config['feature_notification']                 = <%=node["oun-ServiceAPI"]["webapp"]["features"]["feature_notification"]%>;
+$config['feature_gradebook']                    = <%=node["oun-ServiceAPI"]["webapp"]["features"]["feature_gradebook"]%>;
+$config['feature_groups']                       = <%=node["oun-ServiceAPI"]["webapp"]["features"]["feature_groups"]%>;
+$config['feature_whatsnext']                    = <%=node["oun-ServiceAPI"]["webapp"]["features"]["feature_whatsnext"]%>;
+$config['feature_supportcases']                 = <%=node["oun-ServiceAPI"]["webapp"]["features"]["feature_supportcases"]%>;
+$config['feature_messages']                     = <%=node["oun-ServiceAPI"]["webapp"]["features"]["feature_messages"]%>;
+$config['feature_studygroups']                  = <%=node["oun-ServiceAPI"]["webapp"]["features"]["feature_studygroups"]%>;
+$config['feature_studygroupdiscussions']        = <%=node["oun-ServiceAPI"]["webapp"]["features"]["feature_studygroupdiscussions"]%>;
+$config['feature_notes']                        = <%=node["oun-ServiceAPI"]["webapp"]["features"]["feature_notes"]%>;
+$config['feature_analytics']                    = <%=node["oun-ServiceAPI"]["webapp"]["features"]["feature_analytics"]%>;
+$config['feature_note_taking']                  = <%=node["oun-ServiceAPI"]["webapp"]["features"]["feature_note_taking"]%>;
+
+?>

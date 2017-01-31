@@ -1,0 +1,14 @@
+Defaults	env_reset
+root		ALL=(ALL) ALL
+%admin 		ALL=(ALL) ALL
+ubuntu  	ALL=(ALL) NOPASSWD:ALL
+
+<% node["oun"]["sudoers_groups"].each do |group| -%>
+%<%=group %>	ALL=(ALL) NOPASSWD:ALL
+<%end -%>
+
+<% node["oun"]["sudoers_users"].each do |group| -%>
+<%=user %>	ALL=(ALL) NOPASSWD:ALL
+<%end -%>
+
+#includedir /etc/sudoers.d
